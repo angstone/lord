@@ -35,5 +35,12 @@ services:
     networks:
       - default
 
+  ping-service:
+    build: ./ping-service
+    volumes:
+      - ./ping-service:/home/node/app
+    networks:
+      - default
+
 networks:
   default:
