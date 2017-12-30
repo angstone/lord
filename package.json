@@ -1,0 +1,28 @@
+{
+  "name": "@angstone/lord",
+  "version": "0.0.0",
+  "description": "Compose Angstone backend network.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/angstone/lord.git"
+  },
+  "keywords": [
+    "backend",
+    "eventstore",
+    "elasticsearch"
+  ],
+  "author": "SS Ribeiro <luan@ssribeiro.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angstone/lord/issues"
+  },
+  "homepage": "https://github.com/angstone/lord#readme",
+  "engines": {
+    "node": "=9.3.0",
+    "npm": "~5.5.1"
+  }
+}
