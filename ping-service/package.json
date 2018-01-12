@@ -10,7 +10,6 @@
   "author": "SS Ribeiro",
   "license": "MIT",
   "dependencies": {
-    "@angstone/microservice": "0.0.x",
-    "forever": "^0.15.3"
+    "@angstone/microservice": "^0.0.4"
   }
 }

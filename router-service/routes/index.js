@@ -1,61 +1,16 @@
-const routes = [{
-  pin: 'role:system,cmd:*',
-  map: {
-    ping: {
-      GET: true,
-      alias: '/ping'
-    }
-  }
-}];
+'use strict';
 
-module.exports = routes;
+module.exports = (micro) => {
 
-/*
+  // todoList Routes
+  micro.express_app.route('/ping')
+    .get((req, res) => {
+      micro.act({topic: 'system', cmd: 'ping'}, (err, ans)=>{
+    		if(err)
+          res.send(err);
+        else
+          res.json(ans);
+    	});
+    });
 
-routes = [{
-  pin: 'role:ping,cmd:*',
-  //prefix: '/ping',
-  //postfix: '/?param=true',
-  map: {
-    ping: {
-      GET: true,
-      alias: '/ping',
-    },
-  }
-}]
-
-this.act('role: web', {
-		use: {
-			prefix: '/products',
-			pin: 	'role: products, cmd: *',
-			map: {
-				getProductById: { alias: '/:id' }
-			}
-		}
-	});
-
-  map: {
-    home: {
-      GET: true,
-      POST: true,
-      alias: '/home'
-    },
-    logout: {
-      GET: true,
-      redirect: '/'
-    },
-    profile: {
-      GET: true,
-      autoreply: false
-    },
-    login: {
-      POST: true,
-      auth: {
-        strategy: 'local',
-        pass: '/profile',
-        fail: '/'
-      }
-    }
-  }
-
-  */
+};

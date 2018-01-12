@@ -7,6 +7,5 @@ VOLUME /home/node/app
 WORKDIR /home/node/app
 
 CMD npm install \
- && npm install forever \
  && $(npm bin)/forever start -w --minUptime 10 --spinSleepTime 1000 index.js \
  && tail -f ../.forever/*.log

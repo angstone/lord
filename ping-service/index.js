@@ -1,7 +1,7 @@
-const micro = require('@angstone/microservice');
+const micro = require('@angstone/microservice').create();
 
-micro.seneca.add('role:system, cmd:ping', (args, callback) => {
-	callback(null, {result:'pong'});
-});
+micro.add({topic: 'system', cmd: 'ping'}, (req)=>{
+	return {result: 'pong'};
+})
 
 micro.start();

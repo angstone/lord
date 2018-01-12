@@ -1,11 +1,20 @@
 version: '3'
 services:
 
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - default
+
   eventstore:
     image: eventstore/eventstore:release-4.0.3
     ports:
       - "2113:2113"
       - "1113:1113"
+    networks:
+      - default
 
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
@@ -14,15 +23,8 @@ services:
       - "9300:9300"
     environment:
       - discovery.type=single-node
-
-  nats:
-    build:
-      context: "./nats"
-    expose:
-      - "4222"
-    ports:
-      - "4222:4222"
-      - "8222:8222"
+    networks:
+      - default
 
   router-service:
     build: ./router-service
@@ -30,12 +32,15 @@ services:
       - "3000:3000"
     volumes:
       - ./router-service:/home/node/app
-    depends_on:
-      - nats
+    networks:
+      - default
 
   ping-service:
     build: ./ping-service
     volumes:
       - ./ping-service:/home/node/app
-    depends_on:
-      - nats
+    networks:
+      - default
+
+networks:
+  default:

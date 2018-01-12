@@ -10,11 +10,7 @@
   "author": "SS Ribeiro",
   "license": "MIT",
   "dependencies": {
-    "@angstone/microservice": "0.0.x",
-    "body-parser": "1.18.x",
-    "express": "4.16.x",
-    "forever": "^0.15.3",
-    "seneca-web": "2.2.x",
-    "seneca-web-adapter-express": "1.1.x"
+    "@angstone/microservice": "^0.0.4",
+    "express": "4.16.x"
   }
 }

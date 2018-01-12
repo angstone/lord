@@ -9,6 +9,5 @@ WORKDIR /home/node/app
 EXPOSE 3000
 
 CMD npm install \
- && npm install forever \
  && $(npm bin)/forever start -w --minUptime 10 --spinSleepTime 1000 index.js \
  && tail -f ../.forever/*.log
