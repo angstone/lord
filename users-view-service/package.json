@@ -1,7 +1,7 @@
 {
-  "name": "ping-service",
+  "name": "users-view-service",
   "version": "0.0.0",
-  "description": "ping microservice",
+  "description": "users view microservice",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,6 +10,6 @@
   "author": "SS Ribeiro",
   "license": "MIT",
   "dependencies": {
-    "@angstone/microservice": "^0.0.5"
+    "@angstone/microservice": "^0.0.4"
   }
 }

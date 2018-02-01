@@ -16,13 +16,13 @@ services:
       - discovery.type=single-node
 
   nats:
-    image: 'nats:0.8.0'
-    entrypoint: "/gnatsd -DV"
+    build:
+      context: "./nats"
     expose:
       - "4222"
     ports:
+      - "4222:4222"
       - "8222:8222"
-    hostname: nats
 
   router-service:
     build: ./router-service
@@ -30,7 +30,6 @@ services:
       - "3000:3000"
     volumes:
       - ./router-service:/home/node/app
-      - ./routes:/home/node/routes
     depends_on:
       - nats
 
