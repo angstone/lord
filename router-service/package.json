@@ -12,6 +12,7 @@
   "dependencies": {
     "@angstone/microservice": "^0.0.4",
     "body-parser": "1.18.x",
+    "cors": "^2.8.4",
     "express": "4.16.x"
   }
 }
