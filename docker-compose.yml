@@ -41,6 +41,15 @@ services:
     depends_on:
       - nats
 
+  users-reducer-service:
+    build: ./users-reducer-service
+    volumes:
+      - ./users-reducer-service:/home/node/app
+      - ./rules:/home/node/rules
+    depends_on:
+      - nats
+      - eventstore
+
   users-signup-service:
     build: ./users-signup-service
     volumes:
@@ -48,3 +57,5 @@ services:
       - ./rules:/home/node/rules
     depends_on:
       - nats
+      - eventstore
+      - users-reducer-service

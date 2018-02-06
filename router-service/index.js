@@ -12,7 +12,7 @@ const delivery = (res) => {
     if(err)
       res.json({code: 500, err});
     else
-      res.json({code: 200, ans});
+      res.json({code: 200, ans: ans.evt.data});
   };
 };
 

@@ -1,7 +1,7 @@
 {
-  "name": "users-signup-service",
+  "name": "users-reducer-service",
   "version": "0.0.0",
-  "description": "users signup microservice",
+  "description": "users reducer microservice",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
