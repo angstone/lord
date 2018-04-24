@@ -1,0 +1,15 @@
+{
+  "name": "view-services",
+  "version": "0.0.0",
+  "description": "view microservice",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SS Ribeiro",
+  "license": "MIT",
+  "dependencies": {
+    "@angstone/microservice": "^0.0.12"
+  }
+}

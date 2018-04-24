@@ -6,56 +6,90 @@ services:
     ports:
       - "2113:2113"
       - "1113:1113"
+    logging:
+      driver: "none"
 
-  elastic:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
-    ports:
-      - "9200:9200"
-      - "9300:9300"
+  mongodb:
+    image: mongo:latest
     environment:
-      - discovery.type=single-node
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    #volumes:
+    #  - ./mongo_data:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+
+  mongoexpress:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    #restart: always
+    #mem_limit: 128m
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    #command: sh -c 'sleep 10 && tini -- node app'
+    depends_on:
+      - mongodb
+    logging:
+      driver: "none"
 
   nats:
-    image: 'nats:0.8.0'
-    entrypoint: "/gnatsd -DV"
+    build:
+      context: "./nats"
     expose:
       - "4222"
     ports:
+      - "4222:4222"
       - "8222:8222"
-    hostname: nats
+      - "6222:6222"
+    depends_on:
+      - eventstore
+      - mongodb
+    logging:
+      driver: "none"
 
-  router-service:
-    build: ./router-service
+  router:
+    build: ./router
     ports:
       - "3000:3000"
     volumes:
-      - ./router-service:/home/node/app
+      - ./router:/home/node/app
       - ./routes:/home/node/routes
     depends_on:
-      - nats
+      - operators
 
-  ping-service:
-    build: ./ping-service
+  operators:
+    build: ./operators
     volumes:
-      - ./ping-service:/home/node/app
+      - ./operators:/home/node/app
+      - ./models:/home/node/models
+      - ./rules:/home/node/rules
     depends_on:
-      - nats
+      - reducers
+      - views
 
-  users-reducer-service:
-    build: ./users-reducer-service
+  reducers:
+    build: ./reducers
     volumes:
-      - ./users-reducer-service:/home/node/app
+      - ./reducers:/home/node/app
+    depends_on:
+      - renders
+
+  renders:
+    build: ./renders
+    volumes:
+      - ./renders:/home/node/app
+      - ./models:/home/node/models
       - ./rules:/home/node/rules
     depends_on:
       - nats
-      - eventstore
 
-  users-signup-service:
-    build: ./users-signup-service
+  views:
+    build: ./views
     volumes:
-      - ./users-signup-service:/home/node/app
+      - ./views:/home/node/app
+      - ./models:/home/node/models
       - ./rules:/home/node/rules
     depends_on:
-      - nats
-      - eventstore
-      - users-reducer-service
+      - renders

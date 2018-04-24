@@ -3,10 +3,10 @@
 module.exports = [
   {
     route: '/ping',
-    get: {topic: 'system', cmd: 'ping'},
+    get: {action: 'ping'},
   },
   {
-    route: '/signup',
-    post: {topic: 'users', cmd: 'signup'},
+    route: '/user/signup',
+    post: {action: 'user_signup'},
   },
 ];

@@ -1,10 +1,12 @@
 {
   "name": "@angstone/lord",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Compose Angstone backend network.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clear": "./scripts/docker-remove.sh test*",
+    "reborn": "./scripts/docker-reborn.sh test* .",
+    "start": "docker-compose up"
   },
   "repository": {
     "type": "git",
@@ -12,8 +14,7 @@
   },
   "keywords": [
     "backend",
-    "eventstore",
-    "elasticsearch"
+    "eventstore"
   ],
   "author": "SS Ribeiro <luan@ssribeiro.com>",
   "license": "MIT",
