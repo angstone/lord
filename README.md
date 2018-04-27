@@ -5,9 +5,12 @@ THIS IS A PROTOTYPE OF A FRAMEWORK FOR BACKEND PROGRAMING
 Compose Angstone backend network.
 It brings microservices together and run the entire backend.
 
-## Usage
+## Install And Use
 
-```docker-compose up```
+```git clone http://github.com/angstone/lord```
+```cd lord```
+```sudo chmod +x scripts/*```
+```npm start```
 
 so if you do
 
