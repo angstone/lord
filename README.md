@@ -32,9 +32,10 @@ you should see
 
 ## HOW TO WORK WITH THIS FRAMEWORK?
 
-* SEPARATE YOUR BACKEND IN SIMPLE ACTIOS OR VIEWS API ROUTES.
-An action perform changes in DB or dispatch triggers in the backend.
-An view is just a data access.
+* Separate your backend in simple ACTIOS or VIEWS.
+
+** An action perform changes in DB or dispatch triggers in the backend.
+** A view is just a data access.
 
 If you want to add an action:
 
