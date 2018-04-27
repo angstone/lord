@@ -46,11 +46,13 @@ If you want to add an action:
 
 3- Add the Operator (Thats so easy like just declare it in the operator microservice);
 
-4- Add the Reducer (Even if it is does nothing you have to add it. Just follows the structure of the sample);
+4- Add the Reducer (Even if It does nothing you have to add it. Just follows the structure in sample);
 
 5- Add Render (This perform changes in the DB using Models. The models declared will be automaticaly loaded);
 
 6- Add Route in Routes folder (That is just easy as just point the route to the operation performed);
+
+###
 
 
 If you want to add a view:
