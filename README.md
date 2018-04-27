@@ -32,26 +32,37 @@ you should see
 
 ## HOW TO WORK WITH THIS FRAMEWORK?
 
-* Separate your backend in simple ACTIOS or VIEWS.
+* Separate your backend in simple ACTIONS or VIEWS.
 
-** An action perform changes in DB or dispatch triggers in the backend.
-** A view is just a data access.
+### An action perform changes in DB or dispatch triggers in the backend.
+
+### A view is just a data access.
 
 If you want to add an action:
 
 1- Add Models you need and you dont have yet in the folder Models pointing it in the index file.
+
 2- Add the business rules and the messages the api will need in the Rules folder pointing it in the index file;
+
 3- Add the Operator (Thats so easy like just declare it in the operator microservice);
+
 4- Add the Reducer (Even if it is does nothing you have to add it. Just follows the structure of the sample);
+
 5- Add Render (This perform changes in the DB using Models. The models declared will be automaticaly loaded);
+
 6- Add Route in Routes folder (That is just easy as just point the route to the operation performed);
+
 
 If you want to add a view:
 
 1- Add view in View microservice. The Models declared will be loaded.
+
 2- Add Route in Routes folder (That is just easy as just point the route to the view);
 
+
 ```npm start```
+
 or to restart..
+
 ```npm run reborn```
 
